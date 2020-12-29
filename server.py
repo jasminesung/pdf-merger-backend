@@ -1,21 +1,8 @@
-from flask import Flask, request
-from flask_restful import Resource, Api
-app = Flask(__name__)
-api = Api(app)
+import flask
+import main
 
+app = flask.Flask(__name__)
 
-class Convert(Resource):
-    def get(self):
-        base = request.args.get('base')
-        temp = float(request.args.get('temp'))
-        if base == 'celsius':
-            result = temp * 9/5 + 32
-        elif base == 'fahrenheit':
-            result = (temp - 32) * 5/9
-        return round(result, 2)
-
-
-api.add_resource(Convert, '/convert')
-
-if __name__ == 'main':
-    app.run()
+@app.route('/convert')
+def convert():
+    return main.convert_temp(flask.request)
