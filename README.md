@@ -1,6 +1,6 @@
 # pdf-merger-backend
 
-An API build with Python and Flask to merge multiple PDF files.
+An API built with Python and Flask to merge multiple PDF files.
 
 To run locally with Python3:
 
