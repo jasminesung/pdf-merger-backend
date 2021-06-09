@@ -1,5 +1,4 @@
-import os
-from flask import Flask, make_response, request
+from flask import Flask, request, send_from_directory, current_app
 from flask_cors import CORS, cross_origin
 from PyPDF2 import PdfFileMerger
 
@@ -10,11 +9,8 @@ cors = CORS(app)
 @cross_origin()
 def merge():
     merger = PdfFileMerger()
-    # r = make_response('hihi')
-    print(request.files)
     for key in request.files:
-        print(key, ':',  request.files[key])
         merger.append(request.files[key])
-    merger.write('./temp/mergedPdf.pdf')
+    merger.write('mergedPdf.pdf')
     merger.close()
-    return 'hihi'
+    return send_from_directory(directory=current_app.root_path, filename='mergedPdf.pdf', as_attachment=True, mimetype='application/pdf')
