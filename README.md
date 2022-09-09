@@ -10,6 +10,6 @@ To run locally with Python3:
 
 3. Run `python3 -m pip install -r requirements.txt`.
 
-4. Run `export FLASK_APP=server.py`.
+4. Run `export FLASK_APP=main.py`.
 
 5. Run `python3 -m flask run`.
